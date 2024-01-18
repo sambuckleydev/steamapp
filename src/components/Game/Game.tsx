@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
+import { GameProps } from "./types";
 import { convertMinutes } from './../../utils/ConvertMinutes';
 
-const Game: React.FC<any> = ({ game }) => {
+const Game: React.FC<GameProps> = ({ game }) => {
     return (
         <div>
             <h4>{game.name}</h4>

@@ -2,8 +2,9 @@
 
 import React from "react";
 import Game from "./Game";
+import { GameListProps } from "./types";
 
-const GameList: React.FC<any> = ({ games }) => {
+const GameList: React.FC<GameListProps> = ({ games }) => {
     if (!games) {
         return (
             <p>No Games to render...</p>

@@ -1,3 +1,5 @@
+import { Game } from "../Game/types";
+
 export interface SearchProps {
     onSearch: (query: string) => any; // In production a more robust return interface would be preferred, omitting this for time.
 }
@@ -23,7 +25,7 @@ export interface SearchResultData {
     };
     gamesOwned: {
         game_count: number;
-        games: [any]; // Game interface definition should go here
+        games: [Game];
         total_playtime: number;
     }
 }
