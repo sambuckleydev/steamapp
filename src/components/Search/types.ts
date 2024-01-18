@@ -24,6 +24,7 @@ export interface SearchResultData {
     gamesOwned: {
         game_count: number;
         games: [any]; // Game interface definition should go here
+        total_playtime: number;
     }
 }
 

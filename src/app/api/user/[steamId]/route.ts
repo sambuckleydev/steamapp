@@ -41,7 +41,8 @@ export async function GET(request: Request, context: RouteContext) {
       steamId,
       gamesOwned: {
         game_count: dataOwnedGames.response.game_count,
-        games: dataOwnedGames.response.games.sort((a:any, b:any) => b.playtime_forever - a.playtime_forever)
+        games: dataOwnedGames.response.games.sort((a:any, b:any) => b.playtime_forever - a.playtime_forever),
+        total_playtime: dataOwnedGames.response.games.reduce((a:any, b:any) => { return a + b.playtime_forever}, 0)
       },
       playerSummary: dataPlayerSummaries.response.players[0]
     }), {
