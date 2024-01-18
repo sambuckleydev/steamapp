@@ -4,7 +4,7 @@ export interface SearchProps {
 
 export interface SearchResultData {
     steamId: string;
-    player: {
+    playerSummary: {
         avatar: string;
         avatarfull: string;
         avatarhash: string;
@@ -21,7 +21,10 @@ export interface SearchResultData {
         steamid: string;
         timecreated: number;
     };
-    games: any;
+    gamesOwned: {
+        game_count: number;
+        games: [any]; // Game interface definition should go here
+    }
 }
 
 export interface SearchResultsProps {

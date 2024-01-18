@@ -39,8 +39,11 @@ export async function GET(request: Request, context: RouteContext) {
 
     return new Response(JSON.stringify({
       steamId,
-      games: dataOwnedGames.response,
-      player: dataPlayerSummaries.response.players[0]
+      gamesOwned: {
+        game_count: dataOwnedGames.response.game_count,
+        games: dataOwnedGames.response.games.sort((a:any, b:any) => b.playtime_forever - a.playtime_forever)
+      },
+      playerSummary: dataPlayerSummaries.response.players[0]
     }), {
       headers: {
         "Content-Type": "application/json",
