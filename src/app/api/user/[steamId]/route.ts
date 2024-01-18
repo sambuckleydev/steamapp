@@ -37,10 +37,14 @@ export async function GET(request: Request, context: RouteContext) {
     const dataOwnedGames = await responseOwnedGames.json();
     const dataPlayerSummaries = await responsePlayerSummaries.json();
 
+    // console.log(dataOwnedGames.response);
+    // console.log(dataOwnedGames.response);
+
     return new Response(JSON.stringify({
       steamId,
       gamesOwned: {
         game_count: dataOwnedGames.response.game_count,
+        // TODO - This sucks, write better mutations with error conditionals
         games: dataOwnedGames.response.games.sort((a:any, b:any) => b.playtime_forever - a.playtime_forever),
         total_playtime: dataOwnedGames.response.games.reduce((a:any, b:any) => { return a + b.playtime_forever}, 0)
       },
