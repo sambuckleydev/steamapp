@@ -12,7 +12,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
 
     return (
         <div>
-            <h2>Search Results for {results.steamId}</h2>
+            <h2>{results.player.personaname}</h2>
+            <p>Steam ID: {results.steamId}</p>
+            <p>Total Games: {results.games.game_count}</p>
         </div>
     )
 }
