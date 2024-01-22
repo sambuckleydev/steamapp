@@ -6,7 +6,7 @@ import { SearchProps } from "./types";
 import Image from "next/image";
 
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState(''); // 76561197960434622 Test ID
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
