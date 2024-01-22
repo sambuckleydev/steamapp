@@ -4,9 +4,11 @@ import styles from "./Card.module.scss";
 import React from "react";
 import { CardProps } from "./types";
 
-const Card: React.FC<CardProps> = ({ children }) => {
+const Card: React.FC<CardProps> = ({ children, style, className}) => {
+    const classNames = className ? className : '';
+
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${classNames}`} style={style}>
             {children}
         </div>
     )

@@ -15,25 +15,27 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
 
     return (
         <>
-            <Card>
-                <div>                
-                    <img src={results.playerSummary.avatarfull} width={100} height={100} />
-                </div>
-                <div>
-                    <h2>{results.playerSummary.personaname}</h2>
-                    <p>Steam ID: {results.steamId}</p>
-                </div>
-            </Card>
-            
-            <Card>
-                <h3>Games Owned</h3>  
-                <p>{results.gamesOwned.game_count}</p>
-            </Card>
-            
-            <Card>
-                <h3>Total Play Time</h3>  
-                <p>{convertMinutes(results.gamesOwned.total_playtime)}</p>
-            </Card>
+            <div className="grid-container grid-2-1-1">
+                <Card>
+                    <div>                
+                        <img src={results.playerSummary.avatarfull} width={100} height={100} />
+                    </div>
+                    <div>
+                        <h2>{results.playerSummary.personaname}</h2>
+                        <p>Steam ID: {results.steamId}</p>
+                    </div>
+                </Card>
+                
+                <Card className="centered-text">
+                    <h3>Games Owned</h3>  
+                    <p className="large-text">{results.gamesOwned.game_count}</p>
+                </Card>
+                
+                <Card className="centered-text">
+                    <h3>Total Play Time</h3>
+                    <p className="large-text">{`${Math.floor(results.gamesOwned.total_playtime / 60).toLocaleString()}h`}</p>
+                </Card>
+            </div>
 
             <Card>
                 <div>

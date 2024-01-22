@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./Game.module.scss";
 import React from "react";
 import Game from "./Game";
 import { GameListProps } from "./types";
@@ -14,10 +15,10 @@ const GameList: React.FC<GameListProps> = ({ games }) => {
 
     return (
         <>
-            <Card>
+            <Card className={styles.gameList}>
                 <header>
                     <h3>Games Owned</h3>
-                    <h3>Played Time</h3>
+                    <h3 className="centered-text">Played Time</h3>
                 </header>
                 <div>
                     {games.slice(1).map((game: any, index: number) => (

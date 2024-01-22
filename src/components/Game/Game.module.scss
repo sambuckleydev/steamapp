@@ -1,3 +1,16 @@
-.game {
-    
+.game,
+.gameList>header {
+    display: flex;
+    margin-bottom: 12px;
+
+    h3:first-child,
+    p:first-child
+     {
+        flex-grow: 1;
+    }
+
+    h3:last-child,
+    p:last-child {
+        min-width: 240px;
+    }
 }

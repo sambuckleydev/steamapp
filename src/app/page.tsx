@@ -42,7 +42,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1>Steam App</h1>
       <Search onSearch={handleSearch} />
       <SearchResults results={searchResults} />
     </main>
