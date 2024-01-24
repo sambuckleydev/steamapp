@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Add an environment variable for your private Steam API key `STEAM_API_KEY` in `.env.local` in the project root directory.
+
 First, run the development server:
 
 ```bash
