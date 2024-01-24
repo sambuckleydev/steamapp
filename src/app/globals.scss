@@ -28,10 +28,14 @@ h3 {
   display: grid;
 }
 
-.grid-2-1-1 {
-  grid-template-columns: 2fr 1fr 1fr;
+.grid-5-2-2 {
+  grid-template-columns: 5fr 2fr 2fr;
 }
 
 .centered-text {
   text-align: center;
+}
+
+.visible {
+  opacity: 1 !important; // Using important as a talking point for edge cases
 }
