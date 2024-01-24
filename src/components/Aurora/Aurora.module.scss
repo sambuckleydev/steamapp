@@ -1,0 +1,51 @@
+.auroraContainer {
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.auroraShape1 {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  width: 800px;
+  height: 500px;
+  left: 50%;
+  top: 200px;
+  background: #015bc5;
+  transform: translate(-50%, -50%);
+}
+
+.auroraShape2 {
+  position: absolute;
+  border-radius: 50%;
+  width: 900px;
+  height: 450px;
+  left: 50%;
+  top: 360px;
+  background: #081349;
+  transform: translate(calc(-50% - 330px), -50%) rotate(30deg);
+}
+
+.auroraShape3 {
+  position: absolute;
+  border-radius: 50%;
+  width: 800px;
+  height: 500px;
+  left: 50%;
+  top: 390px;
+  background: #010725;
+  transform: translate(calc(-50% + 330px), -50%) rotate(-35deg);
+}
+
+.auroraBlur {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(180px);
+}

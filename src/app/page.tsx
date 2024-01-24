@@ -8,6 +8,7 @@ import styles from "./page.module.scss";
 import React from "react";
 import Search from "@/components/Search/Search";
 import { LoadingProvider } from "@/context/loadingContext";
+import Aurora from "@/components/Aurora/Aurora";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <main className={styles.main}>
         <Search />
       </main>
+      <Aurora />
     </LoadingProvider>
   );
 }
