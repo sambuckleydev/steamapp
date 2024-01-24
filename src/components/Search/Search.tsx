@@ -1,38 +1,52 @@
 "use client";
 
-import styles from "./Search.module.scss";
-import React, {useState} from "react";
-import { SearchProps } from "./types";
-import Image from "next/image";
+import React, { useState } from "react";
+import SearchInput from "./SearchInput";
+import SearchResults from "./SearchResult";
+import { SearchResultData } from "@/components/Search/types";
+import { useLoading } from "@/context/loadingContext";
 
-const Search: React.FC<SearchProps> = ({ onSearch }) => {
-    const [query, setQuery] = useState('76561197960434622'); // 76561197960434622 Test ID
+const Search: React.FC = () => {
+  const { isLoading, setLoading } = useLoading();
+  const [searchResults, setSearchResults] = useState<SearchResultData[] | any>(
+    null
+  );
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
-    };
+  const handleSearch = async (query: string) => {
+    console.log("Searching for:", query);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        onSearch(query);
-    };
+    // For this example I have not included any CORS/Headers configuration to secure the API
+    // Something such as the cors module would be appropriate for a Nextjs backend https://www.npmjs.com/package/cors
+    try {
+      setLoading(true);
+      const apiUrl = `/api/user/${query}`;
+      const response = await fetch(apiUrl);
 
-    return (
-        <form className={styles.searchContainer} onSubmit={handleSubmit}>
-            <div className={styles.searchInputWrapper}>
-                <input
-                    className={styles.searchInput}
-                    type="text"
-                    value={query}
-                    onChange={handleInputChange}
-                    placeholder="Enter Steam ID"
-                />
-                <button className={styles.searchButton}>
-                    <Image src="/icon-search.svg" width={42} height={42} alt="Search" />
-                </button>
-            </div>
-        </form>
-    );
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // Parse the JSON response
+      const userData = await response.json();
+
+      // Handle the data (e.g., set state, display to user)
+      console.log("User data:", userData);
+      setSearchResults(userData);
+    } catch (error) {
+      // Handle any errors
+      console.error("Search error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <SearchInput onSearch={handleSearch} />
+      <SearchResults results={searchResults} />
+    </>
+  );
 };
 
 export default Search;

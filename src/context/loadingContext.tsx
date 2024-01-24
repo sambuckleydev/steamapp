@@ -1,21 +1,23 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode } from "react";
 
 // Define the shape of the context state
-interface LoadingContextState {
+interface ILoadingContext {
   isLoading: boolean;
   setLoading: (isLoading: boolean) => void;
 }
 
 // Create the context with an initial undefined value
-const LoadingContext = createContext<LoadingContextState | undefined>(undefined);
+const LoadingContext = createContext<ILoadingContext | undefined>(undefined);
 
 // LoadingProvider props type
-interface LoadingProviderProps {
+interface ILoadingProviderProps {
   children: ReactNode;
 }
 
 // Define the provider component
-export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
+export const LoadingProvider: React.FC<ILoadingProviderProps> = ({
+  children,
+}) => {
   const [isLoading, setLoading] = useState(false);
 
   return (
@@ -26,10 +28,10 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) =>
 };
 
 // Custom hook to use the loading context
-export const useLoading = (): LoadingContextState => {
+export const useLoading = (): ILoadingContext => {
   const context = useContext(LoadingContext);
   if (context === undefined) {
-    throw new Error('useLoading must be used within a LoadingProvider');
+    throw new Error("useLoading must be used within a LoadingProvider");
   }
   return context;
 };

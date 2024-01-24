@@ -5,45 +5,16 @@
 // However for this example I'll be writing my own API implementation.
 
 import styles from "./page.module.scss";
-import React, {useState} from "react";
+import React from "react";
 import Search from "@/components/Search/Search";
-import SearchResults from "@/components/Search/SearchResult";
-import { SearchResultData } from "@/components/Search/types";
+import { LoadingProvider } from "@/context/loadingContext";
 
 export default function Home() {
-  const [searchResults, setSearchResults] = useState<SearchResultData[] | any>(null);
-
-  const handleSearch = async (query: string) => {
-    console.log("Searching for:", query);
-
-    // For this example I have not included any CORS/Headers configuration to secure the API
-    // Something such as the cors module would be appropriate for a Nextjs backend https://www.npmjs.com/package/cors
-    try {
-      const apiUrl = `/api/user/${query}`;
-      const response = await fetch(apiUrl);
-
-      // Check if the response is successful
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      // Parse the JSON response
-      const userData = await response.json();
-
-      // Handle the data (e.g., set state, display to user)
-      console.log("User data:", userData);
-      setSearchResults(userData);
-
-    } catch (error) {
-      // Handle any errors
-      console.error("Search error:", error);
-    }
-  };
-
   return (
-    <main className={styles.main}>
-      <Search onSearch={handleSearch} />
-      <SearchResults results={searchResults} />
-    </main>
+    <LoadingProvider>
+      <main className={styles.main}>
+        <Search />
+      </main>
+    </LoadingProvider>
   );
 }
