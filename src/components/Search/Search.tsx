@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import SearchInput from "./SearchInput";
-import SearchResults from "./SearchResult";
+import SearchResults from "./SearchResults";
 import { SearchResultData } from "@/components/Search/types";
 import { useLoading } from "@/context/loadingContext";
 

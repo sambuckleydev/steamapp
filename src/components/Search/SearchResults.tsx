@@ -1,9 +1,10 @@
 "use client";
 
+import styles from "./Search.module.scss";
 import React from "react";
 import { SearchResultsProps } from "./types";
-import { convertMinutes } from "./../../utils/ConvertMinutes";
-import GameList from "./../Game/GameList";
+import { convertMinutes } from "../../utils/ConvertMinutes";
+import GameList from "../Game/GameList";
 import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import { useLoading } from "@/context/loadingContext";
@@ -18,8 +19,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
   return (
     <>
       <div className="grid-container grid-5-2-2">
-        <Card>
-          <div>
+        <Card className={styles.playerCard}>
+          <div className={styles.playerCardImg}>
             <img
               src={results.playerSummary.avatarfull}
               width={100}
@@ -28,7 +29,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
           </div>
           <div>
             <h2>{results.playerSummary.personaname}</h2>
-            <p>Steam ID: {results.steamId}</p>
+            <p className="small-text">Steam ID: {results.steamId}</p>
           </div>
         </Card>
 
@@ -45,7 +46,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
         </Card>
       </div>
 
-      <Card>
+      <Card className={styles.mostPlayedCard}>
         <div>
           <h3>Most Played Game</h3>
           <p>{results.gamesOwned.games[0].name}</p>
